@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "StickerSmash",
-    "slug": "StickerSmash",
+    "name": "PetGrove",
+    "slug": "PetGrove",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,10 +18,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ayush3310.PetGrove"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d6622ff0-fde1-4177-9acb-32a7b507c5be"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d6622ff0-fde1-4177-9acb-32a7b507c5be"
     }
   }
 }
