@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { getAuth } from 'firebase/auth';
+import { HomeTabNavigator} from './Navigator'
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -118,7 +119,7 @@ const HomeScreen = () => {
           onPress={handleSignOut}
            >
           <Text style={styles.buttonText}>Sign Out</Text>
-      </TouchableOpacity>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </ScrollView>

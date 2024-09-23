@@ -1,12 +1,24 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useEffect } from 'react';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginScreen = () => {
+  const navigation = useNavigation()
+  // get user
+  useEffect(()=> {
+    const auth = getAuth();
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if(user){
+        navigation.replace("Home");
+      }
+    });
+    return unsubscribe;
+  }, []);
 
-    const navigation = useNavigation()
   const handleRedirect = () => {
-    navigation.replace('HomeScreen');
+    navigation.replace('Home');
   };
 
   const handleRedirectLogin = () => {
@@ -23,11 +35,11 @@ const LoginScreen = () => {
       </View>
 
       {/* Login Buttons */}
-      <TouchableOpacity style={[styles.button, styles.gmailButton]} onPress={handleRedirect}>
+      <TouchableOpacity style={[styles.button, styles.gmailButton]} >
         <Text style={styles.buttonText}>Login with Google</Text>
       </TouchableOpacity>
       
-      <TouchableOpacity style={[styles.button, styles.facebookButton]} onPress={handleRedirect}>
+      <TouchableOpacity style={[styles.button, styles.facebookButton]} >
         <Text style={styles.buttonText}>Login with Facebook</Text>
       </TouchableOpacity>
       

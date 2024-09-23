@@ -53,9 +53,8 @@ const CreatePetProfile = () => {
       healthNotes,
       image,
     });
-
-    // Redirect to IndexScreen or HomeScreen (ensure correct screen name)
-    navigation.navigate('HomeScreen'); // Or 'HomeScreen' if that's the intended target
+    
+    navigation.navigate('Home'); 
   };
 
   return (
