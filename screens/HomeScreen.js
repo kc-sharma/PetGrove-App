@@ -2,25 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { getAuth } from 'firebase/auth';
-import { HomeTabNavigator} from './Navigator'
+import Header from '../components/Header'; 
 
 const HomeScreen = () => {
+  const [searchQuery, setSearchQuery] = useState('');
   const navigation = useNavigation();
-  const auth = getAuth()
-  
-  const handleSignOut = ( ) => {
-    auth
-    .signOut()
-    .then(()=>{
-      navigation.replace("Login")
-    })
-    .catch(error => alert(error.mesage))
-  }
 
   return (
-
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+    <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <ScrollView >
       
       <Text style={styles.title}>Welcome to Pet Grove!</Text>
       <Text style={styles.subtitle}>Discover everything your pet needs in one place.</Text>
@@ -29,7 +20,7 @@ const HomeScreen = () => {
         <View style={styles.grid}>
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => navigation.navigate('CreatePetProfile')}
+            onPress={() => navigation.navigate('Create')}
           >
             <Image source={require('../assets/food-icon.png')} style={styles.icon} />
             <Text style={styles.gridText}>Food</Text>
@@ -45,7 +36,7 @@ const HomeScreen = () => {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => navigation.navigate('CreatePetProfile')}
+            onPress={() => navigation.navigate('Create')}
           >
             <Image source={require('../assets/grooming-icon.png')} style={styles.icon} />
             <Text style={styles.gridText}>Grooming</Text>
@@ -77,7 +68,7 @@ const HomeScreen = () => {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => navigation.navigate('CreatePetProfile')}
+            onPress={() => navigation.navigate('Create')}
           >
             <Image source={require('../assets/accessories.webp')} style={styles.icon} />
             <Text style={styles.gridText}>Accessories</Text>
@@ -85,14 +76,13 @@ const HomeScreen = () => {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => navigation.navigate('CreatePetProfile')}
+            onPress={() => navigation.navigate('Create')}
           >
             <Image source={require('../assets/clothes.webp')} style={styles.icon} />
             <Text style={styles.gridText}>clothes</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => navigation.navigate('ProductsTab')}
           >
             <Image source={require('../assets/toy.png')} style={styles.icon} />
             <Text style={styles.gridText}>Others</Text>
@@ -108,21 +98,16 @@ const HomeScreen = () => {
 
           <TouchableOpacity
             style={styles.gridItem}
-            onPress={() => navigation.navigate('ProductsTab')}
           >
             <Image source={require('../assets/gift.png')} style={styles.icon} />
             <Text style={styles.gridText}>Gifts</Text>
           </TouchableOpacity>
-          <Text>Email: {auth.currentUser?.email}</Text>
-          <TouchableOpacity
-          style = {styles.button}
-          onPress={handleSignOut}
-           >
-          <Text style={styles.buttonText}>Sign Out</Text>
-          </TouchableOpacity>
+          
         </View>
       </ScrollView>
     </ScrollView>
+    </View>
+    
 
   )
 }
@@ -133,7 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e0f2f1', // Soft teal background for a calming effect
-    padding: 20,
+    padding: 10,
   },
   title: {
     fontSize: 40,

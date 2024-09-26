@@ -1,25 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { useEffect } from 'react';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
   const navigation = useNavigation()
-  // get user
-  useEffect(()=> {
-    const auth = getAuth();
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if(user){
-        navigation.replace("Home");
-      }
-    });
-    return unsubscribe;
-  }, []);
-
-  const handleRedirect = () => {
-    navigation.replace('Home');
-  };
 
   const handleRedirectLogin = () => {
     navigation.replace('EmailLogin');

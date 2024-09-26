@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';  // Assuming firebase.js has the initialized Firebase app
+import { auth } from '../firebase'; 
 import { useNavigation } from '@react-navigation/native';
 
 const EmailLoginScreen = () => {
@@ -20,7 +20,7 @@ const EmailLoginScreen = () => {
     const auth = getAuth();
     const unsubscribe = auth.onAuthStateChanged(user => {
       if(user){
-        navigation.replace("Home");
+        navigation.replace("LandingPage");
       }
     });
     return unsubscribe;

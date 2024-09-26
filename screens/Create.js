@@ -12,7 +12,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
-const CreatePetProfile = () => {
+const Create = () => {
   const [petName, setPetName] = useState('');
   const [species, setSpecies] = useState('');
   const [breed, setBreed] = useState('');
@@ -185,4 +185,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreatePetProfile;
+export default Create;
